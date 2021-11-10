@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Login & Register</title>
+</head>
+<body>
+    <main>
+        <div class="contenedor__todo">
+            <div class="caja__back">
+                <div class="caja__back-login">
+                    <h3>Ya tienes una cuenta?</h3>
+                    <p>Inicia sesión para ingresar</p>
+                    <button id="btn__iniciar-sesion">Iniciar Sesión</button>
+                </div>
+                <div class="caja__back-register">
+                    <h3>Aún no tienes una cuenta?</h3>
+                    <p>Registrate para poder iniciar sesión</p>
+                    <button id="btn__registrarse">Registrarse</button>
+                </div>
+            </div>
+            <!--Formulario de login y registro-->
+            <div class="contenedor__login-register">
+                <!-- Login -->
+                <form action="" class="formulario__login" id="log-in">
+                    <h2>Iniciar sesión</h2>
+                    <input id="emailLogin" type="text" placeholder="Correo Electrónico">
+                    <input id="passwordLogin" type="password" placeholder="Contraseña">
+                    <button id="btn-login" type="submit">Ingresar</button>
+                    <div class="resultado"></div>
+                </form>
+                <!-- Registro -->
+                <form action="" class="formulario__register" id="sign-up">
+                    <h2>Registrarse</h2>
+                    <input id="nameSignup" type="text" placeholder="Nombre Completo">
+                    <input id="emailSignip" type="text" placeholder="Correo Electrónico">
+                    <input id="usernameSignup" type="text" placeholder="Usuario">
+                    <input id="passwordSignup" type="password" placeholder="Contraseña">
+                    <button id="btn-signUp" type="submit">Registrarse</button>
+                    <div class="resultado"></div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script type="module" src="assets/js/script.js"></script>
+</body>
+</html>
