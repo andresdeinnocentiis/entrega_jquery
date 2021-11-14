@@ -41,15 +41,17 @@ const formLogin = $("#log-in")
 
 
 function anchoPag() {
+    //const resultado = $(".resultado");
+    //resultado.hide()
     if ($(window).innerWidth() > 850) {
-        cajaBackLogin.css("display", "block");
-        cajaBackRegister.css("display", "block");
+        cajaBackLogin.show();
+        cajaBackRegister.show();
     } else {
-        cajaBackRegister.css("display", "block");
+        cajaBackRegister.show();
         cajaBackRegister.css("opacity", "1");
-        cajaBackLogin.css("display", "none");
-        formularioLogin.css("display", "block");
-        formularioRegister.css("display", "none");
+        cajaBackLogin.hide();
+        formularioLogin.show();
+        formularioRegister.hide();
         contenedorLogReg.css("left", "0px")
     }
 }
@@ -58,20 +60,21 @@ anchoPag()
 
 function register() {
     formSignup[0].reset()
-    const resultado = $(".resultado");
-    resultado.empty()
+    const resultado = $(".resultado-sign");
+    resultado.hide()
     if ($(window).innerWidth() > 850) {
-        formularioRegister.css("display", "block");
+        
+        formularioRegister.show();
         contenedorLogReg.css("left", "385px");
-        formularioLogin.css("display", "none");
+        formularioLogin.hide();
         cajaBackRegister.css("opacity", "0");
         cajaBackLogin.css("opacity", "1");
     } else {
-        formularioRegister.css("display", "block");
+        formularioRegister.show();
         contenedorLogReg.css("left", "0px");
-        formularioLogin.css("display", "none");
-        cajaBackRegister.css("display", "none");
-        cajaBackLogin.css("display", "block");
+        formularioLogin.hide();
+        cajaBackRegister.hide();
+        cajaBackLogin.show();
         cajaBackLogin.css("opacity", "1");
         
     }
@@ -80,20 +83,20 @@ function register() {
 function login() {
     formLogin[0].reset()
 
-    const resultado = $(".resultado");
-    resultado.empty()
+    const resultado = $(".resultado-log");
+    resultado.hide()
     if ($(window).innerWidth() > 850) {
-        formularioRegister.css("display", "none");
+        formularioRegister.hide();
         contenedorLogReg.css("left", "10px");
-        formularioLogin.css("display", "block");
+        formularioLogin.show();
         cajaBackRegister.css("opacity", "1");
         cajaBackLogin.css("opacity", "0");
     } else {
-        formularioRegister.css("display", "none");
+        formularioRegister.hide();
         contenedorLogReg.css("left", "0px");
-        formularioLogin.css("display", "block");
-        cajaBackRegister.css("display", "block");
-        cajaBackLogin.css("display", "none");
+        formularioLogin.show();
+        cajaBackRegister.show();
+        cajaBackLogin.hide();
         
     }
 }
@@ -102,15 +105,18 @@ function login() {
 
 function crearUser() {
     const boton = $("#btn-signUp");
-    const resultado = $(".resultado");
+    const resultado = $(".resultado-sign");
     let users = Storage.getAllUsers()
     boton.on('click', (event) => {
         
         event.preventDefault();
         let error = validarCamposSign();
         if (error[0]) {
-            resultado.html(error[1])
-            resultado.addClass("red")
+            resultado.html(error[1]).fadeIn("slow", function() {
+                resultado.html(error[1]).fadeOut(5000)
+            })
+                resultado.addClass("red")
+            //resultado.show()
             } else {
                 const user = {
                     id:Math.floor(Math.random()*1000000),
@@ -124,6 +130,7 @@ function crearUser() {
                 resultado.html("Solicitud enviada correctamente");
                 resultado.addClass("green")
                 resultado.removeClass("red")
+                resultado.show()
                 formSignup[0].reset()
             }
 
@@ -132,19 +139,25 @@ function crearUser() {
 function ingresar() {
     
     const boton = $("#btn-login");
-    const resultado = $(".resultado");
+    const resultado = $(".resultado-log");
     
     boton.on('click', (event) => {
-        
         event.preventDefault();
         let error = validarCamposLog();
+        
         if (error[0]) {
-            resultado.html(error[1])
+            resultado.html(error[1]).fadeIn("slow", function() {
+                resultado.html(error[1]).fadeOut(5000)
+            })
             resultado.addClass("red")
+            
+            //resultado.show()
+            
             } else {
-                resultado.html("Solicitud enviada correctamente");
+                resultado.html("Solicitud enviada correctamente").fadeIn();
                 resultado.addClass("green")
                 resultado.removeClass("red")
+                resultado.show()
                 formLogin[0].reset()
             }
 
